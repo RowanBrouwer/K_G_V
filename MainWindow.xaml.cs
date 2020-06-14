@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -26,9 +28,9 @@ namespace K_G_V
             InitializeComponent();
         }
 
+        int Nm1 = 0;
+        int Nm2 = 0;
         int inputflag = 0;
-        long Nm1 = 0;
-        long Nm2 = 0;
 
         private void Reset_Click(object sender, RoutedEventArgs e)
         {
@@ -37,15 +39,34 @@ namespace K_G_V
             Nm2 = 0;
             Nummer_1.Text = "";
             Nummer_2.Text = "";
-
+            Antwoord.Text = "";
         }
-
-        private void Bereken_Click(object sender, RoutedEventArgs e)
+        public static int V_K_G_V(int a, int b)
+        {
+            int num1, num2;
+            if (a > b)
+            {
+                num1 = a; num2 = b;
+            }
+            else
+            {
+                num1 = b; num2 = a;
+            }
+            for (int i = 1; i < num2; i++)
+            {
+                if ((num1 * i) % num2 == 0)
+                {
+                    return (int)(i * num1);
+                }
+            }
+            return (int)(num1 * num2);
+        }
+        public void Bereken_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                long Nm1 = long.Parse(Nummer_1.Text);
-                long Nm2 = long.Parse(Nummer_2.Text);
+                Nm1 = int.Parse(Nummer_1.Text);
+                Nm2 = int.Parse(Nummer_2.Text);
             }
             catch (Exception)
             {
@@ -53,8 +74,14 @@ namespace K_G_V
                 Nm2 = 0;
                 inputflag = 1;
             }
-           
-
+            if (inputflag == 1)
+            {
+                Antwoord.Text = "Er is een fout opgetreden.";
+            }
+            int awnser = V_K_G_V(Nm1, Nm2);
+            string A = string.Format("Het kleinste gemene veelvoud is {0}", awnser);
+            Antwoord.Text = (A);
         }
+
     }
 }
