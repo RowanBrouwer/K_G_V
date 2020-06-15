@@ -63,7 +63,9 @@ namespace K_G_V
             for (int i = 1; i < num2; i++) {
                 if ((num1 * i) % num2 == 0) {
                     return (int)(i * num1);}}
-            return (int)(num1 * num2);}
+            return (int)(num1 * num2);
+           
+        }
 
         public void Bereken_Click(object sender, RoutedEventArgs e)
         {
