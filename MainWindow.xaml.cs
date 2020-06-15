@@ -41,9 +41,14 @@ namespace K_G_V
             Nummer_2.Text = "";
             Antwoord.Text = "";
         }
+
+        // berekening voor het kleinste gemene veelvoud //
         public static int V_K_G_V(int a, int b)
         {
             int num1, num2;
+
+            // kijken welk van de 2 getallen het hoogst is // 
+
             if (a > b)
             {
                 num1 = a; num2 = b;
@@ -52,17 +57,18 @@ namespace K_G_V
             {
                 num1 = b; num2 = a;
             }
-            for (int i = 1; i < num2; i++)
-            {
-                if ((num1 * i) % num2 == 0)
-                {
-                    return (int)(i * num1);
-                }
-            }
-            return (int)(num1 * num2);
-        }
+
+            // daadwerkelijke berekening // 
+
+            for (int i = 1; i < num2; i++) {
+                if ((num1 * i) % num2 == 0) {
+                    return (int)(i * num1);}}
+            return (int)(num1 * num2);}
+
         public void Bereken_Click(object sender, RoutedEventArgs e)
         {
+            // parsing met catch //
+
             try
             {
                 Nm1 = int.Parse(Nummer_1.Text);
@@ -82,8 +88,10 @@ namespace K_G_V
             {
                 int awnser = V_K_G_V(Nm1, Nm2);
                 string A = string.Format("Het kleinste gemene veelvoud is {0}", awnser);
-                Antwoord.Text = (A);
+                Antwoord.Text = A;
             }
+
+            //------------------------------------------------------------------//
         }
 
     }
