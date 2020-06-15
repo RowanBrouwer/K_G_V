@@ -78,9 +78,12 @@ namespace K_G_V
             {
                 Antwoord.Text = "Er is een fout opgetreden.";
             }
-            int awnser = V_K_G_V(Nm1, Nm2);
-            string A = string.Format("Het kleinste gemene veelvoud is {0}", awnser);
-            Antwoord.Text = (A);
+            else
+            {
+                int awnser = V_K_G_V(Nm1, Nm2);
+                string A = string.Format("Het kleinste gemene veelvoud is {0}", awnser);
+                Antwoord.Text = (A);
+            }
         }
 
     }
