@@ -43,7 +43,7 @@ namespace K_G_V
         }
 
         // berekening voor het kleinste gemene veelvoud //
-        public static int V_K_G_V(long a, long b)
+        public static long V_K_G_V(long a, long b)
         {
             long num1, num2;
 
